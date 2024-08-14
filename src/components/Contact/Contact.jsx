@@ -1,9 +1,9 @@
 import { useDispatch } from "react-redux";
-import { deleteContact } from "../../redux/contacsOps";
+import { deleteContact } from "../../redux/contactsOps";
 import { FaPhone, FaUser } from "react-icons/fa";
 import s from "/src/components/Contact/Contact.module.css";
 
-const Contact = ({ contact }) => {
+const Contact = ({ contact}) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {

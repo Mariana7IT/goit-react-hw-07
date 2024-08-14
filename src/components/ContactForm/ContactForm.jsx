@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { addContact } from "../../redux/contacsOps";
+import { addContact } from "../../redux/contactsOps";
 import s from "./ContactForm.module.css";
 
 const initialValues = { name: "", number: "" };
@@ -18,6 +18,7 @@ const validationSchema = Yup.object({
 
 const ContactForm = () => {
   const dispatch = useDispatch();
+  const loading = useSelector((state) => state.contacts.loading);
 
   const handleSubmit = (values, { resetForm }) => {
     dispatch(addContact(values));
@@ -27,8 +28,8 @@ const ContactForm = () => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={validationSchema}
       onSubmit={handleSubmit}
+      validationSchema={validationSchema}
     >
       <Form className={s.wrapper}>
         <label>
@@ -41,8 +42,8 @@ const ContactForm = () => {
           <Field name="number" className={s.contactInput} />
           <ErrorMessage name="number" component="span" className={s.error} />
         </label>
-        <button type="submit" className={s.formBtn}>
-          Add contact
+        <button type="submit" className={s.formBtn} disabled={loading}>
+          {loading ? "Adding..." : "Add contact"}
         </button>
       </Form>
     </Formik>
