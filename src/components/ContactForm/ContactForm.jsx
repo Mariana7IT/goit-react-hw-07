@@ -1,10 +1,8 @@
-import React from "react";
-import { useDispatch } from "react-redux";
-import { addContact } from "../../redux/contactsSlice";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup"; 
+import * as Yup from "yup";
+import { addContact } from "../../redux/contactsOps";
 import s from "./ContactForm.module.css";
-
 
 const initialValues = { name: "", number: "" };
 const validationSchema = Yup.object({

@@ -1,4 +1,3 @@
-import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { changeFilter, selectNameFilter } from "../../redux/filtersSlice";
 import s from "./SearchBox.module.css";
@@ -12,13 +11,17 @@ const SearchBox = () => {
   };
 
   return (
-    <input
-      type="text"
-      value={filter}
-      onChange={handleChange}
-      placeholder="Search contacts"
-      className={s.searchInput}
-    />
+    <div>
+      <span className={s.wrapper}>
+        <p>Find contacts by name</p>
+        <input
+          type="text"
+          value={filter}
+          onChange={handleChange}
+          className={s.searchInput}
+        />
+      </span>
+    </div>
   );
 };
 
