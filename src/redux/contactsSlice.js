@@ -14,7 +14,7 @@ const contactsSlice = createSlice({
     builder
       .addCase(fetchContacts.pending, (state) => {
         state.loading = true;
-        state.error = null;
+        
       })
       .addCase(fetchContacts.fulfilled, (state, action) => {
         state.loading = false;
